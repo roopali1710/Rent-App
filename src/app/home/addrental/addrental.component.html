@@ -7,17 +7,17 @@
     <div class="form-group">
       <label for="title">Title Of Property</label>
       <input name="title" ngModel type="text" class="form-control" placeholder="Enter Title" required>
-      <small id="emailHelp" class="form-text text-muted">You Must Enter the Title less then 100 letters</small>
+      <small id="emailHelp" class="form-text ">You Must Enter the Title less then 100 letters</small>
     </div>
     <div class="form-group">
       <label for="price">Price</label>
       <input name="price" ngModel type="text" class="form-control" placeholder="Enter Price" required>
-      <small id="emailHelp" class="form-text text-muted">Enter the price in rupees (5000.00)</small>
+      <small id="emailHelp" class="form-text" >Enter the price in rupees (5000.00)</small>
     </div>
     <div class="form-group">
       <label for="price">Locality</label>
       <input name="locality" ngModel type="text" class="form-control" placeholder="Enter Locality" required>
-      <small id="emailHelp" class="form-text text-muted">You Must Enter the Title less then 100 letters</small>
+      <small id="emailHelp" class="form-text">You Must Enter the Title less then 100 letters</small>
     </div>
     <div class="form-group">
       <label for="description">Description</label>
@@ -31,6 +31,11 @@
       <label for="ownercontact">Owner Contact</label>
       <input name="ownercontact" ngModel type="text" class="form-control" placeholder="Owner Contact" required>
     </div>
-    <button type="submit" [disabled]="!addRentalForm.valid" class="btn btn-primary btn-block">Submit</button>
+    <div class="form-group">
+    <label>Add image</label>
+    <input (change)="selectFile($event)" type="file" class="form-control-file" id="exampleFormControlFile1">
+  <p *ngIf='isUploaded'>Uploaded successfully</p>
+  </div>
+    <button style="background-color: darkslategray" type="submit" [disabled]="!addRentalForm.valid" class="btn btn-primary btn-block">Submit</button>
   </form>
 </div>

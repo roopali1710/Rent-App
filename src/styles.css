@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background-image: url("assets/giphy.gif");
+    width: 100%;
+  }
+label {
+color:white;
+  }
+  small{
+color:white;
+  }
+  input{
+    color:white;
+  }
+  h3,h1,h2,h4{
+    color: white;
+  }

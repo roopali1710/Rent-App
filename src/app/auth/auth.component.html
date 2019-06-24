@@ -1,2 +1,5 @@
-<router-outlet></router-outlet>
-
+<p> Welcome To Rental App!
+    Please Signin or Signup
+</p>
+<button style="background-color: darkslategray" (click)='changeRoute("/auth/signin")'> SignIn</button>
+<button style="background-color: darkslategray" routerLink="signup" routerLinkActive="router-link-active" > SignUp</button>

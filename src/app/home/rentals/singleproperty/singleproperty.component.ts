@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { AuthService } from 'src/app/service/auth.service';
+import { EnquiryService } from 'src/app/service/enquiry.service';
+import { NgForm } from '@angular/forms';
+import { AngularFireStorage } from '@angular/fire/storage';
+
 
 @Component({
   selector: 'app-singleproperty',
@@ -6,11 +11,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./singleproperty.component.css']
 })
 export class SinglepropertyComponent implements OnInit {
-  property={title:'3-BHK FLAT',description:'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for  will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).'
-            ,ownername:'Ankit',ownercontact:'8888888888',price:'5000',createdOn:new Date()  }
-  constructor() { }
+  @Input('property') property
+  image:any
+  showForm:boolean=false
+  
+  constructor(public authService:AuthService,private storage:AngularFireStorage,public enquiryService:EnquiryService) { }
 
   ngOnInit() {
+    this.image=this.storage.ref(this.property.image).getDownloadURL()
+  }
+
+  sendEnquiry(enquiryForm:NgForm){
+    console.log(enquiryForm.value)
+    let title=this.property.title
+    let timestamp=new Date()
+    let id=this.property.id
+    let ownerEmail=this.property.ownerEmail
+    let email=this.authService.getEmail()
+    this.enquiryService.addEnquiry({email,ownerEmail,timestamp,id,title,...enquiryForm.value}).then(data=>{
+      enquiryForm.reset()
+      this.showForm=false
+
+    }).catch(err=>{
+      console.log(err)
+    })
   }
 
 }

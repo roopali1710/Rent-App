@@ -1,3 +1,23 @@
-<p>
-  signin works!
-</p>
+<div style="align-items: center">
+  <br>
+  <div style="width: 300px; margin: auto ;align-content: center">
+      <form  (ngSubmit)="signin(signinForm)" #signinForm="ngForm">
+        <h3>Sign In</h3>
+        <br>
+  
+        <p *ngIf=signInError() style="font-size: 18px; color: red"><strong>{{errorMessage()}}</strong></p>
+        <!-- <p *ngIf="hasErrorOccured"  style="color:red">Incorrect credentials / User not registered</p> -->
+  <label for="inputEmail" class="sr-only">Email address</label>
+  <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" ngModel required>
+  <small id="emailHelp" class="form-text text-muted">Enter a registered email ID</small>
+<br>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" ngModel required>
+  <br>
+    <button  style="background-color: darkslategray" [disabled]="!signinForm.valid" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  
+</form>
+OR <a [routerLink]="['/auth/signup']" routerLinkActive="router-link-active">Sign Up</a> 
+</div>
+</div>
+

@@ -18,6 +18,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
 import { IndexComponent } from './home/index/index.component';
 import { SinglepropertyComponent } from './home/rentals/singleproperty/singleproperty.component';
+import { ErrorComponent } from './error/error.component';
+import { EnquiriesComponent } from './home/enquiries/enquiries.component';
 
 
 
@@ -31,13 +33,16 @@ import { SinglepropertyComponent } from './home/rentals/singleproperty/singlepro
     RentalsComponent,
     AddrentalComponent,
     IndexComponent,
-    SinglepropertyComponent
+    SinglepropertyComponent,
+    ErrorComponent,
+    EnquiriesComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     NgbModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
