@@ -1,3 +1,24 @@
+<div class="row">
+  <div class="col">
+    <div ngbDropdown class="d-inline-block">
+      <button  class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Order By</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button (click)=getOrdered('desc') ngbDropdownItem>Price high to low</button>
+        <button (click)=getOrdered('asc') ngbDropdownItem>Price low to high </button>
+        <button ngbDropdownItem>Owner</button>
+      </div>
+    </div>
+  </div>
+
+<form (ngSubmit)="search(searchForm.value.locality)" #searchForm="ngModel" class="form-inline my-2 my-lg-0">
+        <input ngModel name="locality" required class="form-control mr-sm-2" type="search" placeholder="Search locality" aria-label="Search">
+        <button [disabled]="!searchForm.valid" style="background-color: darkslategray" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search for Property</button>
+      </form>
+
+
+<br>
+
+
 <div *ngIf="mode=='list'" class="container">
   <div class="row">
     <div *ngFor="let property of properties" class="col-lg-4 col-md-4" style="margin-bottom:10px;">

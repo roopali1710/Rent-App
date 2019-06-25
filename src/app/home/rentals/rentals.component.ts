@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RentalService } from 'src/app/service/rental.service';
+import { copyStyles } from '@angular/animations/browser/src/util';
 
 @Component({
   selector: 'app-rentals',
@@ -27,4 +28,16 @@ export class RentalsComponent implements OnInit {
     this.selectedProperty=property
   }
 
+  getOrdered(by:string){
+    return this.rentalService.getOrderedRentals(by).subscribe(data=>{
+      this.properties=data
+    })
+  }
+
+  search(searchkey:string){
+    console.log(searchkey)
+    this.rentalService.getByLocality(searchkey).subscribe(data=>{
+
+    })
+  }
 }
