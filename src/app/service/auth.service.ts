@@ -24,8 +24,8 @@ export class AuthService {
 
     logIn(email,password){
       this.FirebaseAuth.auth.signInWithEmailAndPassword(email,password).then(data=>{
-        console.log(data)
         this.userDetails=data
+        console.log(this.userDetails)
         this.router.navigateByUrl('/home')
         this.isLoggedIn=true
       }).catch(err=>{
@@ -40,6 +40,8 @@ export class AuthService {
       this.FirebaseAuth.auth.createUserWithEmailAndPassword(email,password).then(data=>{
         console.log(data)
         this.isAccountCreated=true
+        this.userDetails=data
+        this.router.navigateByUrl('/home')
       
       }).catch(err=>{
         console.log(err)

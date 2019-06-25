@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./addrental.component.css']
 })
 export class AddrentalComponent implements OnInit {
-  path=''
+  path=""
   isUploaded:boolean=false
   isPropertyAdded:boolean=false
   constructor(public rentalService:RentalService,public authService:AuthService,private storage:AngularFireStorage, public router:Router) { }
@@ -22,7 +22,7 @@ export class AddrentalComponent implements OnInit {
     let ownerEmail=this.authService.getEmail()
     let image=this.path
     console.log(addrentalform.value)
-    this.rentalService.addRental(addrentalform.value).then(data=>{
+    this.rentalService.addRental({image,ownerEmail,...addrentalform.value}).then(data=>{
       console.log(data.id)
       addrentalform.reset()
       this.isPropertyAdded=true
